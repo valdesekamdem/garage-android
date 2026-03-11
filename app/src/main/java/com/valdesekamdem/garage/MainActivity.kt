@@ -1,7 +1,5 @@
 package com.valdesekamdem.garage
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.core.net.toUri
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.valdesekamdem.garage.ui.theme.GarageTheme
@@ -32,12 +29,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-private fun Activity.goToGoogle() {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = "https://www.google.com".toUri()
-    startActivity(intent)
 }
 
 @Composable
