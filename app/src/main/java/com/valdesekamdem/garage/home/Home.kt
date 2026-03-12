@@ -1,4 +1,4 @@
-package com.valdesekamdem.garage
+package com.valdesekamdem.garage.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,26 +10,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
-val users = listOf(
-    "Valdese Kamdem",
-    "Jean Dark",
-    "Clark Monday",
-    "Just Oliver"
-)
+import com.valdesekamdem.garage.home.HomeUiEvent.SelectUser
 
 @Composable
 fun Home(
+    uiState: HomeUiState,
     modifier: Modifier = Modifier,
-    onUserClick: (String) -> Unit = {}
 ) {
     LazyColumn(
         modifier = modifier.fillMaxSize().padding(horizontal = 16.dp),
     ) {
-        items(items = users, key = { it.hashCode() }) { name ->
+        items(items = uiState.users, key = { it.hashCode() }) { name ->
             UserCell(
                 name = name,
-                onClick = { onUserClick(name) }
+                onClick = { uiState.onEvent(SelectUser(name)) }
             )
         }
     }
@@ -51,5 +45,15 @@ fun UserCell(
 @Preview(showBackground = true)
 @Composable
 fun HomePreview() {
-    Home()
+    Home(
+        uiState = HomeUiState(
+            users = listOf(
+                "Valdese Kamdem",
+                "Jean Dark",
+                "Clark Monday",
+                "Just Oliver"
+            ),
+            onEvent = {}
+        )
+    )
 }
