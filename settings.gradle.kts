@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "garage-android"
 include(":app")
- 
+include(":core:navigation")
