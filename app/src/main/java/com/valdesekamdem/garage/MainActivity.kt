@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavBackStack
@@ -26,6 +27,7 @@ import com.valdesekamdem.garage.home.screens.UserDetailScreen
 import com.valdesekamdem.garage.home.ui.Home
 import com.valdesekamdem.garage.home.ui.UserDetail
 import com.valdesekamdem.garage.home.viewmodel.HomeViewModel
+import com.valdesekamdem.garage.home.viewmodel.UserDetailViewModel
 import com.valdesekamdem.garage.ui.theme.GarageTheme
 
 class MainActivity : ComponentActivity() {
@@ -86,9 +88,12 @@ fun Main(
             )
         }
         entry<UserDetailScreen> { screen ->
+            // FIXMe: This viewmodel should not be created here.
+            val userDetailViewModel = remember { UserDetailViewModel(navigator, screen) }
             UserDetail(
-                name = screen.name,
-                onBackClick = { navigator.getBack() }
+                // FIXME: There is a high risk here that the view could continue listening uiState
+                //  even when the screen is removed from the backStack. Need to investigate
+                uiState = userDetailViewModel.uiState.collectAsStateWithLifecycle().value,
             )
         }
     }

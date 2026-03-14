@@ -13,20 +13,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.valdesekamdem.garage.home.viewmodel.UserDetailUiEvent
+import com.valdesekamdem.garage.home.viewmodel.UserDetailUiState
 
 @Composable
 fun UserDetail(
-    name: String,
+    uiState: UserDetailUiState,
     modifier: Modifier = Modifier,
-    onBackClick: () -> Unit = {},
 ) {
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Hello $name!",
+            text = "Hello, ${uiState.name}!",
             modifier = modifier,
             style = MaterialTheme.typography.displayMedium
         )
@@ -34,7 +37,7 @@ fun UserDetail(
         Spacer(modifier = Modifier.padding(16.dp))
 
         TextButton(
-            onClick = onBackClick,
+            onClick = { uiState.onEvent(UserDetailUiEvent.GoBack) },
         ) {
             Text("Back")
         }
@@ -44,5 +47,5 @@ fun UserDetail(
 @Preview(showBackground = true)
 @Composable
 fun UserDetailPreview() {
-    UserDetail(name = "John Snow", onBackClick = {})
+    UserDetail(UserDetailUiState(name = "John Snow", onEvent = {}))
 }
