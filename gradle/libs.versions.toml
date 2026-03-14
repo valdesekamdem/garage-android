@@ -1,4 +1,9 @@
 [versions]
+android-compileSdk = "36"
+android-compileSdkMinor = "1"
+android-minSdk = "24"
+android-targetSdk = "36"
+
 agp = "9.1.0"
 coreKtx = "1.18.0"
 junit = "4.13.2"
@@ -10,6 +15,7 @@ kotlin = "2.3.10"
 composeBom = "2026.03.00"
 nav3Core = "1.0.1"
 kotlinSerialization = "2.3.10"
+androidGradlePlugin = "9.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,9 +36,15 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 # Core Navigation 3 libraries
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
+## Convention plugins dependencies
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle-api", version.ref = "androidGradlePlugin" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization"}
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+#Project's local plugins
+garage-android-library = { id = "garage.android.library" }
