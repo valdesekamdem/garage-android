@@ -1,4 +1,4 @@
-package com.valdesekamdem.garage.home
+package com.valdesekamdem.garage.home.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.valdesekamdem.garage.home.HomeUiEvent.SelectUser
+import com.valdesekamdem.garage.home.viewmodel.HomeUiEvent.SelectUser
+import com.valdesekamdem.garage.home.viewmodel.HomeUiState
 
 @Composable
 fun Home(

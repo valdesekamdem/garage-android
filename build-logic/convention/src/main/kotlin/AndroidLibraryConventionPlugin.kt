@@ -31,6 +31,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         apply {
             plugin("com.android.library")
             plugin("org.jetbrains.kotlin.plugin.compose")
+            plugin("org.jetbrains.kotlin.plugin.serialization")
         }
     }
 

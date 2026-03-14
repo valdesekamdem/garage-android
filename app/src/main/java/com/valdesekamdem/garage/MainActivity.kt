@@ -21,8 +21,11 @@ import com.valdesekamdem.garage.core.navigation.NavigationEvent
 import com.valdesekamdem.garage.core.navigation.NavigationEventSource
 import com.valdesekamdem.garage.core.navigation.Navigator
 import com.valdesekamdem.garage.core.navigation.createNavigatorBindings
-import com.valdesekamdem.garage.home.Home
-import com.valdesekamdem.garage.home.HomeViewModel
+import com.valdesekamdem.garage.home.screens.HomeScreen
+import com.valdesekamdem.garage.home.screens.UserDetailScreen
+import com.valdesekamdem.garage.home.ui.Home
+import com.valdesekamdem.garage.home.ui.UserDetail
+import com.valdesekamdem.garage.home.viewmodel.HomeViewModel
 import com.valdesekamdem.garage.ui.theme.GarageTheme
 
 class MainActivity : ComponentActivity() {
