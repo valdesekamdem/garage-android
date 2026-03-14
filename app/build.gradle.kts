@@ -58,8 +58,8 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
 
-    implementation(project(":core:navigation"))
-    implementation(project(":home"))
+    implementation(projects.core.navigation)
+    implementation(projects.home)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
