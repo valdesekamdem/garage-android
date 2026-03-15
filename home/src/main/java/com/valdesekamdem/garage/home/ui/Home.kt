@@ -10,21 +10,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.valdesekamdem.garage.home.viewmodel.HomeUiEvent
 import com.valdesekamdem.garage.home.viewmodel.HomeUiEvent.SelectUser
 import com.valdesekamdem.garage.home.viewmodel.HomeUiState
 
 @Composable
 fun Home(
     uiState: HomeUiState,
-    modifier: Modifier = Modifier,
+    onEvent: (HomeUiEvent) -> Unit,
 ) {
     LazyColumn(
-        modifier = modifier.fillMaxSize().padding(horizontal = 16.dp),
+        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
     ) {
         items(items = uiState.users, key = { it.hashCode() }) { name ->
             UserCell(
                 name = name,
-                onClick = { uiState.onEvent(SelectUser(name)) }
+                onClick = { onEvent(SelectUser(name)) }
             )
         }
     }
@@ -54,7 +55,7 @@ fun HomePreview() {
                 "Clark Monday",
                 "Just Oliver"
             ),
-            onEvent = {}
-        )
+        ),
+        onEvent = {}
     )
 }

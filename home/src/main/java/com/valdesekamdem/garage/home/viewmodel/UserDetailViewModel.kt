@@ -2,6 +2,7 @@ package com.valdesekamdem.garage.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.valdesekamdem.garage.core.navigation.Navigator
+import com.valdesekamdem.garage.core.presentation.StateHolder
 import com.valdesekamdem.garage.home.screens.UserDetailScreen
 import com.valdesekamdem.garage.home.viewmodel.UserDetailUiEvent.GoBack
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,15 +14,14 @@ sealed interface UserDetailUiEvent {
 
 data class UserDetailUiState(
     val name: String,
-    val onEvent: (UserDetailUiEvent) -> Unit,
 )
 
 class UserDetailViewModel(
     private val navigator: Navigator,
     screen: UserDetailScreen,
-) : ViewModel() {
+) : ViewModel(), StateHolder<UserDetailUiState, UserDetailUiEvent> {
 
-    val onEvent: (UserDetailUiEvent) -> Unit = { event ->
+    override fun onUiEvent(event: UserDetailUiEvent) {
         when(event) {
             is GoBack -> {
                 navigator.getBack()
@@ -29,11 +29,10 @@ class UserDetailViewModel(
         }
     }
 
-    val uiState: StateFlow<UserDetailUiState>
-        field = MutableStateFlow(
-            UserDetailUiState(
-                name = screen.name,
-                onEvent = onEvent,
-            )
+    private val _uiState = MutableStateFlow(
+        UserDetailUiState(
+            name = screen.name,
         )
+    )
+    override val uiState: StateFlow<UserDetailUiState> = _uiState
 }

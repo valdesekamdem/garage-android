@@ -19,10 +19,10 @@ import com.valdesekamdem.garage.home.viewmodel.UserDetailUiState
 @Composable
 fun UserDetail(
     uiState: UserDetailUiState,
-    modifier: Modifier = Modifier,
+    onEvent: (UserDetailUiEvent) -> Unit,
 ) {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
@@ -30,14 +30,13 @@ fun UserDetail(
     ) {
         Text(
             text = "Hello, ${uiState.name}!",
-            modifier = modifier,
             style = MaterialTheme.typography.displayMedium
         )
 
         Spacer(modifier = Modifier.padding(16.dp))
 
         TextButton(
-            onClick = { uiState.onEvent(UserDetailUiEvent.GoBack) },
+            onClick = { onEvent(UserDetailUiEvent.GoBack) },
         ) {
             Text("Back")
         }
@@ -47,5 +46,5 @@ fun UserDetail(
 @Preview(showBackground = true)
 @Composable
 fun UserDetailPreview() {
-    UserDetail(UserDetailUiState(name = "John Snow", onEvent = {}))
+    UserDetail(uiState = UserDetailUiState(name = "John Snow"), onEvent = {})
 }
