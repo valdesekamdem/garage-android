@@ -55,5 +55,9 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 android-library = { id = "com.android.library", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 #Project's local plugins
 garage-android-library = { id = "garage.android.library" }
+garage-android-application = { id = "garage.android.application" }
+garage-android-library-compose = { id = "garage.android.library.compose" }
+garage-kotlin-library = { id = "garage.kotlin.library" }
