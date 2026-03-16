@@ -7,6 +7,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.navigation)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation3.runtime)
 }

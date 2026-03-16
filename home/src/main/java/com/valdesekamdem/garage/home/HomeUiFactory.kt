@@ -1,8 +1,8 @@
 package com.valdesekamdem.garage.home
 
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
-import com.valdesekamdem.garage.core.navigation.Navigator
 import com.valdesekamdem.garage.core.presentation.BindScreen
 import com.valdesekamdem.garage.core.presentation.UiFactory
 import com.valdesekamdem.garage.home.screens.HomeScreen
@@ -13,15 +13,12 @@ import com.valdesekamdem.garage.home.viewmodel.HomeViewModel
 import com.valdesekamdem.garage.home.viewmodel.UserDetailViewModel
 import javax.inject.Inject
 
-class HomeUiFactory @Inject constructor(
-    private val navigator: Navigator,
-): UiFactory {
+class HomeUiFactory @Inject constructor() : UiFactory {
 
     override fun register(scope: EntryProviderScope<NavKey>) = with(scope) {
-        entry<HomeScreen> { screen ->
+        entry<HomeScreen> { _ ->
             BindScreen(
-                screen = screen,
-                stateHolderFactory = { HomeViewModel(navigator) }
+                stateHolder = hiltViewModel<HomeViewModel>()
             ) { uiState, onEvent ->
                 Home(
                     uiState = uiState,
@@ -31,8 +28,9 @@ class HomeUiFactory @Inject constructor(
         }
         entry<UserDetailScreen> { screen ->
             BindScreen(
-                screen = screen,
-                stateHolderFactory = { UserDetailViewModel(navigator, screen) }
+                stateHolder = hiltViewModel<UserDetailViewModel, UserDetailViewModel.Factory> { factory ->
+                    factory.create(screen)
+                }
             ) { uiState, onEvent ->
                 UserDetail(
                     uiState = uiState,

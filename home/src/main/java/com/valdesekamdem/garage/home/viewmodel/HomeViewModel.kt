@@ -5,10 +5,13 @@ import androidx.lifecycle.ViewModel
 import com.valdesekamdem.garage.core.navigation.Navigator
 import com.valdesekamdem.garage.core.presentation.StateHolder
 import com.valdesekamdem.garage.home.screens.UserDetailScreen
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val navigator: Navigator,
 ) : ViewModel(), StateHolder<HomeUiState, HomeUiEvent> {
 

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.valdesekamdem.garage.core.navigation.Screen
 
 /**
  * A screen binder that wires the state holder and the UI composable. This allows the composables
@@ -12,12 +11,9 @@ import com.valdesekamdem.garage.core.navigation.Screen
  */
 @Composable
 fun <UiState, UiEvent, UiStateHolder: StateHolder<UiState, UiEvent>> BindScreen(
-    screen: Screen,
-    stateHolderFactory: () -> UiStateHolder,
+    stateHolder: UiStateHolder,
     component: @Composable (UiState, onUiEvent: (UiEvent) -> Unit) -> Unit,
 ) {
-    val stateHolder = remember(screen) { stateHolderFactory() }
-
     val uiState by stateHolder.uiState.collectAsStateWithLifecycle()
     val onUiEvent = remember(stateHolder) {
         { event: UiEvent -> stateHolder.onUiEvent(event) }
