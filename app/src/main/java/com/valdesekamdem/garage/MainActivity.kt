@@ -13,13 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.valdesekamdem.garage.core.navigation.NavigationEvent
 import com.valdesekamdem.garage.core.navigation.NavigationEventSource
 import com.valdesekamdem.garage.core.navigation.Navigator
-import com.valdesekamdem.garage.core.presentation.UiFactoryRegistry
+import com.valdesekamdem.garage.core.presentation.UiFactory
 import com.valdesekamdem.garage.home.screens.HomeScreen
 import com.valdesekamdem.garage.ui.theme.GarageTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
     lateinit var navigationEventSource: NavigationEventSource
 
     @Inject
-    lateinit var uiFactoryRegistry: UiFactoryRegistry
+    lateinit var uiFactories: Set<@JvmSuppressWildcards UiFactory>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     Main(
                         backStack = backStack,
                         navigator = navigator,
-                        uiFactoryRegistry = uiFactoryRegistry,
+                        uiFactories = uiFactories,
                         modifier = Modifier.padding(innerPadding),
                     )
                 }
@@ -78,7 +79,7 @@ fun BindNavigator(
 fun Main(
     backStack: NavBackStack<NavKey>,
     navigator: Navigator,
-    uiFactoryRegistry: UiFactoryRegistry,
+    uiFactories: Set<UiFactory>,
     modifier: Modifier = Modifier
 ) {
     NavDisplay(
@@ -88,7 +89,9 @@ fun Main(
             rememberSaveableStateHolderNavEntryDecorator(),
             rememberViewModelStoreNavEntryDecorator()
         ),
-        entryProvider = uiFactoryRegistry.entryProvider,
+        entryProvider = entryProvider {
+            uiFactories.forEach { factory -> factory.register(this) }
+        },
         modifier = modifier,
     )
 }
