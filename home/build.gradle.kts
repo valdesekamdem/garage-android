@@ -9,6 +9,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.compose.material3)
-    implementation(projects.core.navigation)
+    implementation(projects.core.navigation.api)
     implementation(projects.core.presentation)
 }

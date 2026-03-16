@@ -61,7 +61,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() {
         }
 
         compilerOptions.apply {
-            JvmTarget.JVM_11
+            jvmTarget.set(JvmTarget.JVM_11)
 
             freeCompilerArgs.add("-Xexplicit-backing-fields")
         }

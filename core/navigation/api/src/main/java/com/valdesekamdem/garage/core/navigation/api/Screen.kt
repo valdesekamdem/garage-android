@@ -1,4 +1,4 @@
-package com.valdesekamdem.garage.core.navigation
+package com.valdesekamdem.garage.core.navigation.api
 
 import androidx.navigation3.runtime.NavKey
 

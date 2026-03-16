@@ -35,7 +35,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(projects.core.navigation)
+    implementation(projects.core.navigation.real)
     implementation(projects.core.presentation)
     implementation(projects.home)
 

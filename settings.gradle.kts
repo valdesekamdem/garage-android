@@ -27,6 +27,7 @@ rootProject.name = "garage-android"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":core:navigation")
 include(":home")
 include(":core:presentation")
+include(":core:navigation:api")
+include(":core:navigation:real")

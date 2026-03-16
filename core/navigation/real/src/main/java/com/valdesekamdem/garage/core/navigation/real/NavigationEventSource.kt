@@ -1,5 +1,6 @@
-package com.valdesekamdem.garage.core.navigation
+package com.valdesekamdem.garage.core.navigation.real
 
+import com.valdesekamdem.garage.core.navigation.api.Screen
 import kotlinx.coroutines.flow.Flow
 
 interface NavigationEventSource {

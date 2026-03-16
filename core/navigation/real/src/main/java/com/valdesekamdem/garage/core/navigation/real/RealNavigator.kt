@@ -1,5 +1,7 @@
-package com.valdesekamdem.garage.core.navigation
+package com.valdesekamdem.garage.core.navigation.real
 
+import com.valdesekamdem.garage.core.navigation.api.Navigator
+import com.valdesekamdem.garage.core.navigation.api.Screen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

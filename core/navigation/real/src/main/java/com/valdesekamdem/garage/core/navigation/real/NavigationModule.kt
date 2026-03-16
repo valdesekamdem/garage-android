@@ -1,5 +1,6 @@
-package com.valdesekamdem.garage.core.navigation
+package com.valdesekamdem.garage.core.navigation.real
 
+import com.valdesekamdem.garage.core.navigation.api.Navigator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

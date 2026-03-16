@@ -17,9 +17,9 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
-import com.valdesekamdem.garage.core.navigation.NavigationEvent
-import com.valdesekamdem.garage.core.navigation.NavigationEventSource
-import com.valdesekamdem.garage.core.navigation.Navigator
+import com.valdesekamdem.garage.core.navigation.api.Navigator
+import com.valdesekamdem.garage.core.navigation.real.NavigationEvent
+import com.valdesekamdem.garage.core.navigation.real.NavigationEventSource
 import com.valdesekamdem.garage.core.presentation.UiFactory
 import com.valdesekamdem.garage.home.screens.HomeScreen
 import com.valdesekamdem.garage.ui.theme.GarageTheme
