@@ -11,8 +11,9 @@ import com.valdesekamdem.garage.home.ui.Home
 import com.valdesekamdem.garage.home.ui.UserDetail
 import com.valdesekamdem.garage.home.viewmodel.HomeViewModel
 import com.valdesekamdem.garage.home.viewmodel.UserDetailViewModel
+import javax.inject.Inject
 
-class HomeUiFactory(
+class HomeUiFactory @Inject constructor(
     private val navigator: Navigator,
 ): UiFactory {
 

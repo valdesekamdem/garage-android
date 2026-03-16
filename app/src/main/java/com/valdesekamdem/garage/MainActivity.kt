@@ -17,24 +17,27 @@ import androidx.navigation3.ui.NavDisplay
 import com.valdesekamdem.garage.core.navigation.NavigationEvent
 import com.valdesekamdem.garage.core.navigation.NavigationEventSource
 import com.valdesekamdem.garage.core.navigation.Navigator
-import com.valdesekamdem.garage.core.navigation.createNavigatorBindings
 import com.valdesekamdem.garage.core.presentation.UiFactoryRegistry
-import com.valdesekamdem.garage.home.HomeUiFactory
 import com.valdesekamdem.garage.home.screens.HomeScreen
 import com.valdesekamdem.garage.ui.theme.GarageTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigator: Navigator
+
+    @Inject
+    lateinit var navigationEventSource: NavigationEventSource
+
+    @Inject
+    lateinit var uiFactoryRegistry: UiFactoryRegistry
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        val navigatorBindings = createNavigatorBindings()
-        val navigator = navigatorBindings.navigator
-        val navigationEventSource = navigatorBindings.eventSource
-        val uiFactoryRegistry = UiFactoryRegistry(
-            HomeUiFactory(navigator)
-        )
 
         setContent {
             val backStack = rememberNavBackStack(HomeScreen)

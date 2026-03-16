@@ -20,6 +20,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("androidx.core.ktx").get())
                 "implementation"(platform(libs.findLibrary("androidx.compose.bom").get()))
                 "implementation"(libs.findLibrary("androidx.compose.runtime").get())
+                "implementation"(libs.findLibrary("hilt.android").get())
+                "ksp"(libs.findLibrary("hilt.android.compiler").get())
 
                 "testImplementation"(libs.findLibrary("junit").get())
                 "testImplementation"(libs.findLibrary("androidx.junit").get())
@@ -32,6 +34,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             plugin("com.android.library")
             plugin("org.jetbrains.kotlin.plugin.compose")
             plugin("org.jetbrains.kotlin.plugin.serialization")
+            plugin("com.google.devtools.ksp")
+            plugin("com.google.dagger.hilt.android")
         }
     }
 

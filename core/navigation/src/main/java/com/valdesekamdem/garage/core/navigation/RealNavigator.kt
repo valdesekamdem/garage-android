@@ -3,8 +3,11 @@ package com.valdesekamdem.garage.core.navigation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-internal class RealNavigator : Navigator, NavigationEventSource {
+@Singleton
+class RealNavigator @Inject constructor(): Navigator, NavigationEventSource {
     private val _events = MutableSharedFlow<NavigationEvent>(
         replay = 0,
         extraBufferCapacity = 1,
