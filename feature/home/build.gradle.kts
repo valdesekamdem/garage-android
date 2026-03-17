@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.valdesekamdem.garage.home"
+    namespace = "com.valdesekamdem.garage.feature.feature.home"
 }
 
 dependencies {

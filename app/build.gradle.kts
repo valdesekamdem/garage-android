@@ -37,7 +37,7 @@ dependencies {
 
     implementation(projects.core.navigation.real)
     implementation(projects.core.presentation)
-    implementation(projects.home)
+    implementation(projects.feature.home)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -21,7 +21,7 @@ import com.valdesekamdem.garage.core.navigation.api.Navigator
 import com.valdesekamdem.garage.core.navigation.real.NavigationEvent
 import com.valdesekamdem.garage.core.navigation.real.NavigationEventSource
 import com.valdesekamdem.garage.core.presentation.UiFactory
-import com.valdesekamdem.garage.home.screens.HomeScreen
+import com.valdesekamdem.garage.feature.home.screens.HomeScreen
 import com.valdesekamdem.garage.ui.theme.GarageTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

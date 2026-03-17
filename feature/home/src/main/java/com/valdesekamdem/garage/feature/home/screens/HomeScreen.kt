@@ -1,7 +1,7 @@
-package com.valdesekamdem.garage.home.screens
+package com.valdesekamdem.garage.feature.home.screens
 
 import com.valdesekamdem.garage.core.navigation.api.Screen
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserDetailScreen(val name: String): Screen
+data object HomeScreen: Screen

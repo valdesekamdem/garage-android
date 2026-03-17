@@ -1,4 +1,4 @@
-package com.valdesekamdem.garage.home.ui
+package com.valdesekamdem.garage.feature.home.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.valdesekamdem.garage.home.viewmodel.UserDetailUiEvent
-import com.valdesekamdem.garage.home.viewmodel.UserDetailUiState
+import com.valdesekamdem.garage.feature.home.viewmodel.UserDetailUiEvent
+import com.valdesekamdem.garage.feature.home.viewmodel.UserDetailUiState
 
 @Composable
 fun UserDetail(

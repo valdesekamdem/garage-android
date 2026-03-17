@@ -1,4 +1,4 @@
-package com.valdesekamdem.garage.home
+package com.valdesekamdem.garage.feature.home
 
 import com.valdesekamdem.garage.core.presentation.UiFactory
 import dagger.Binds

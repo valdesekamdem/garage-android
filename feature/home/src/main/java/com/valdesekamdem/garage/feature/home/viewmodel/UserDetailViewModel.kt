@@ -1,10 +1,10 @@
-package com.valdesekamdem.garage.home.viewmodel
+package com.valdesekamdem.garage.feature.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.valdesekamdem.garage.core.navigation.api.Navigator
 import com.valdesekamdem.garage.core.presentation.StateHolder
-import com.valdesekamdem.garage.home.screens.UserDetailScreen
-import com.valdesekamdem.garage.home.viewmodel.UserDetailUiEvent.GoBack
+import com.valdesekamdem.garage.feature.home.screens.UserDetailScreen
+import com.valdesekamdem.garage.feature.home.viewmodel.UserDetailUiEvent.GoBack
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject

@@ -1,16 +1,16 @@
-package com.valdesekamdem.garage.home
+package com.valdesekamdem.garage.feature.home
 
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.valdesekamdem.garage.core.presentation.BindScreen
 import com.valdesekamdem.garage.core.presentation.UiFactory
-import com.valdesekamdem.garage.home.screens.HomeScreen
-import com.valdesekamdem.garage.home.screens.UserDetailScreen
-import com.valdesekamdem.garage.home.ui.Home
-import com.valdesekamdem.garage.home.ui.UserDetail
-import com.valdesekamdem.garage.home.viewmodel.HomeViewModel
-import com.valdesekamdem.garage.home.viewmodel.UserDetailViewModel
+import com.valdesekamdem.garage.feature.home.screens.HomeScreen
+import com.valdesekamdem.garage.feature.home.screens.UserDetailScreen
+import com.valdesekamdem.garage.feature.home.ui.Home
+import com.valdesekamdem.garage.feature.home.ui.UserDetail
+import com.valdesekamdem.garage.feature.home.viewmodel.HomeViewModel
+import com.valdesekamdem.garage.feature.home.viewmodel.UserDetailViewModel
 import javax.inject.Inject
 
 class HomeUiFactory @Inject constructor() : UiFactory {

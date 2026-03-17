@@ -1,10 +1,10 @@
-package com.valdesekamdem.garage.home.viewmodel
+package com.valdesekamdem.garage.feature.home.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.valdesekamdem.garage.core.navigation.api.Navigator
 import com.valdesekamdem.garage.core.presentation.StateHolder
-import com.valdesekamdem.garage.home.screens.UserDetailScreen
+import com.valdesekamdem.garage.feature.home.screens.UserDetailScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
