@@ -2,28 +2,25 @@ package com.valdesekamdem.garage.core.navigation.real
 
 import com.valdesekamdem.garage.core.navigation.api.Navigator
 import com.valdesekamdem.garage.core.navigation.api.Screen
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class RealNavigator @Inject constructor(): Navigator, NavigationEventSource {
-    private val _events = MutableSharedFlow<NavigationEvent>(
-        replay = 0,
-        extraBufferCapacity = 1,
-    )
-    override val events: Flow<NavigationEvent> = _events.asSharedFlow()
+    private val eventChannel = Channel<NavigationEvent>(capacity = Channel.BUFFERED)
+    override val events: Flow<NavigationEvent> = eventChannel.receiveAsFlow()
 
     override fun goTo(screen: Screen) {
-        check(_events.tryEmit(NavigationEvent.NavigateTo(screen))) {
+        check(eventChannel.trySend(NavigationEvent.NavigateTo(screen)).isSuccess) {
             "Failed to enqueue navigation command: NavigateTo($screen)"
         }
     }
 
     override fun getBack() {
-        check(_events.tryEmit(NavigationEvent.Back)) {
+        check(eventChannel.trySend(NavigationEvent.Back).isSuccess) {
             "Failed to enqueue navigation command: Back"
         }
     }
